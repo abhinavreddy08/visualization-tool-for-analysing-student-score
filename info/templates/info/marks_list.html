@@ -1,0 +1,260 @@
+{% extends 'info/base.html' %}
+    {% load static %}
+    {% block content %}
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/data.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+<figure class="highcharts-figure">
+  <div id="container"></div>
+  <div id="containe"></div>
+  <div id="contain"></div>
+  <div id = "container1"></div>
+  <p class="highcharts-description">
+You can actually get to End semester the clear visualization of the graph and table in the below
+  </p>
+
+  <table class="table table-bordered" id="dataTable" width="200%" cellspacing="0">
+   <thead class="thead-dark">
+      <tr>
+         <th>Course Name</th>
+          <th>Quiz1</th>
+          <th>Quiz2</th>
+          <th>Quiz3</th>
+          <th>Minor 1</th>
+          <th>Minor 2</th>
+          <th>End semester</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for sc in sc_list %}
+      <tr>
+        <td>{{sc.course.name}}</td>
+         {% for m in sc.marks_set.all %}
+        <td>{{ m.marks1 }}</td>
+         {%endfor%}
+      {%endfor%}
+    </tbody>
+     
+  </table>
+  <br>
+  <br>
+  <table  class="table table-bordered" id="datat" width="200%" cellspacing="0">
+    <thead class="thead-dark">
+      <tr>
+        <th>Course Name</th>
+         <th>GPA</th>
+         </tr>
+    </thead>
+    <tbody>
+      {% for sc in sc_list %}
+      <tr>
+        <td>{{sc.course.name}}</td>
+        {% if sc.get_cie < 4%}  
+                            <td class="p-3 mb-2 bg-danger text-white">{{ sc.get_cie }}</td>
+                        {% else %}
+                            <td class="p-3 mb-2 bg-success text-white">{{ sc.get_cie }}</td>
+                        {% endif %}
+
+      </tr>
+      {% endfor %}
+    </tbody>
+
+    </table>
+
+  <div>
+    <span class="border border-dark" id="avgV" style="margin-left: 270px  ; font-family: 'Roboto', sans-serif; font-size: xx-large;"><span>
+
+  </div>
+  <div>
+    <br>
+    <span  id="avgres" style="  font-family: 'Roboto', sans-serif; font-size:large;color: red;margin-left: 150px;"><span>
+    </div>
+</figure>
+<style>
+    #container {
+  height: 500px;
+}
+
+.highcharts-figure, .highcharts-data-table table {
+  min-width: 50px;
+  max-width: 1000px;
+  margin: 1em auto;
+}
+
+#dataTable {
+  font-family: Verdana, sans-serif;
+  border-collapse: collapse;
+  border: 1px solid #EBEBEB;
+  margin: 10px auto;
+  text-align: center;
+  width: 200%;
+  max-width: 1000px;
+}
+#dataTable caption {
+  padding: 1em 0;
+  font-size: 1.2em;
+  color: #555;
+}
+#dataTable th {
+	font-weight: 600;
+  padding: 0.5em;
+}
+#dataTable td, #dataTable th, #dataTable caption {
+  padding: 0.5em;
+}
+#dataTable thead tr, #dataTable tr:nth-child(even) {
+  background: #f8f8f8;
+}
+#dataTable tr:hover {
+  background: #f1f7ff;
+}
+</style>
+<script>
+  var table = document.getElementById("datat"), sumVal = 0;
+
+getMin();
+getMax();
+getSum();
+getAvg();
+
+// get min value
+function getMin()
+{
+  var minVal, minIndex;
+  for(var i = 1; i < table.rows.length; i++){
+      if(i === 1){
+          minVal = table.rows[i].cells[1].innerHTML;
+          minIndex = table.rows[i].rowIndex;
+      }else if(minVal > table.rows[i].cells[1].innerHTML){
+          minVal = table.rows[i].cells[1].innerHTML;
+          minIndex = table.rows[i].rowIndex;
+      }
+  }
+  table.rows[minIndex].cells[1].style.background = "red";
+  table.rows[minIndex].cells[1].style.color = "white";
+   console.log("Min => "+minVal);       
+}
+
+
+// get max value
+function getMax()
+{
+  var maxVal, maxIndex;
+  for(var i = 1; i < table.rows.length; i++){
+      if(i === 1){
+          maxVal = table.rows[i].cells[1].innerHTML;
+          maxIndex = table.rows[i].rowIndex;
+      }else if(maxVal < table.rows[i].cells[1].innerHTML){
+          maxVal = table.rows[i].cells[1].innerHTML;
+           maxIndex = table.rows[i].rowIndex;
+      }
+  }
+  table.rows[maxIndex].cells[1].style.background = "green";
+  table.rows[maxIndex].cells[1].style.color = "white";
+   console.log("Max => "+maxVal);       
+}
+
+// caculate total/sum value
+function getSum()
+{
+  for(var i = 1; i < table.rows.length; i++){
+         sumVal = sumVal + parseInt(table.rows[i].cells[1].innerHTML);
+  }
+   console.log("Sum => "+sumVal);       
+}
+
+// caculate avg value
+function getAvg()
+{
+    var avg = sumVal / (table.rows.length - 1);// minus the header
+    document.getElementById("avgV").innerHTML = "CUMMILATIVE GPA = "+parseInt(avg);
+    if(parseInt(avg)<=6){
+      document.getElementById("avgres").innerHTML = "CUMMILATIVE CGPA IS VERY LESS PLEASE IMPROVE IN THE NEXT SEM";
+
+    }
+    console.log("Avg => "+parseInt(avg));
+}
+
+    Highcharts.chart('container', {
+  data: {
+    table: 'dataTable'
+  },
+  chart: {
+    type: 'column'
+  },
+  title: {
+    text: ' BAR GRAPH BELOW'
+  },
+  yAxis: {
+    allowDecimals: false,
+    title: {
+      text: 'MARKS'
+    }
+  },
+  tooltip: {
+    formatter: function () {
+      return '<b>' + this.series.name + '</b><br/>' +
+        this.point.y + ' ' + this.point.name.toLowerCase();
+    }
+  }
+});
+
+Highcharts.chart('containe', {
+  data: {
+    table: 'dataTable'
+  },
+  chart: {
+    type: 'scatter'
+  },
+  title: {
+    text: 'SCATTER'
+  },
+  yAxis: {
+    allowDecimals: false,
+    title: {
+      text: 'MARKS'
+    }
+  },
+  tooltip: {
+    formatter: function () {
+      return '<b>' + this.series.name + '</b><br/>' +
+        this.point.y + ' ' + this.point.name.toLowerCase();
+    }
+  }
+});
+
+Highcharts.chart('contain', {
+  data: {
+    table: 'dataTable'
+  },
+  chart: {
+   polar: true
+  },
+  title: {
+    text: 'POLAR'
+  },
+  yAxis: {
+    allowDecimals: false,
+    title: {
+      text: 'MARKS'
+    }
+  },
+  tooltip: {
+    formatter: function () {
+      return '<b>' + this.series.name + '</b><br/>' +
+        this.point.y + ' ' + this.point.name.toLowerCase();
+    }
+  }
+});
+
+
+
+</script>
+
+
+    {% endblock %}

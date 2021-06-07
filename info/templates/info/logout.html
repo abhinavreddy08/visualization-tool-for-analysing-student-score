@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>{% block title %}{% endblock %}</title>
+      {% load static %}
+
+    <!-- Bootstrap core CSS-->
+    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Page level plugin CSS-->
+    <link href="{% static '/info/bootstrap/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static '/info/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
+
+    <!-- Latest compiled and minified CSS -->
+
+
+      {% block css %}
+      {% endblock %}
+
+  </head>
+
+  <body id="page-top">
+
+    <div id="wrapper">
+
+
+      <div id="content-wrapper">
+        <h1 style="margin-left: 400px;">  <img src="{% static 'info/images/image1.png' %} " style = "height:80%;" class="log" ></h1>
+      
+
+        <div class="container-fluid">
+  
+
+            <div class="text-center h3">
+                <h4 style="margin-left: 50px;"><a class="btn btn-info" href="/accounts/login">login?</a></h4>
+            </div>
+            <br>
+
+        </div>
+        <!-- /.container-fluid -->
+
+      </div>
+      <!-- /.content-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="{% static '/info/bootstrap/js/sb-admin.min.js' %}"></script>
+
+   {% block scripts %}
+    {% endblock %}
+  </body>
+
+</html>
+<style>
+
+body{
+background-color: rgba(243,241,242,255);
+}
+div.cnt{
+position: relative;
+      margin: 0 auto;
+      width: 922px;
+  }
+
+  </style> 

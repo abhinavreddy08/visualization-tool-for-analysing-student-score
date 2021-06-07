@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+      {% load static %}
+
+    <!-- Bootstrap core CSS-->
+    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template-->
+    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this template-->
+    <link href="{% static '/info/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
+
+  </head>
+}
+  <body>
+    <div class="col-xl-4 col-lg-6 order-1 order-lg-2" style="margin: bottom 1000px;">
+      <h1 style="margin-left: 560px;"><img src="{% static 'info/images/logo2.png' %} "class = "img"  ></h1>
+    </div>
+    <section class="login-block">
+      <div class="container">
+    <div class="row">
+      <div class="col-md-4 login-sec">
+          <h2 class="text-center">Login Now</h2>
+
+            <form method="post" class="login-form">
+              {% csrf_token %}
+              {{ form.as_p }}
+              
+                <div class="form-check">
+                <button type="submit" class="btn btn-success float-right">Login</button>
+              </div>
+            </form>
+		</div>
+		<div class="col-md-8 banner-sec">
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                 <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                  </ol>
+            <div class="carousel-inner" role="listbox">
+    <div class="carousel-item active">
+      <img class="d-block img-fluid" src="{% static 'info/images/12.png' %}" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="banner-text">
+        
+            <p></p>
+        </div>	
+  </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="{% static 'info/images/2.jpeg' %}" alt="Second slide">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="banner-text">
+    
+            <p></p>
+        </div>	
+    </div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block img-fluid" src="{% static 'info/images/3.jpg' %}" alt="Third slide">
+      <div class="carousel-caption d-none d-md-block">
+        <div class="banner-text">
+      
+            <p></p>
+        </div>	
+    </div>
+  </div>
+            </div>	   
+		    
+		</div>
+	</div>
+</div>
+</section>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="{% static '/info/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <style>
+      .login-block {
+	background: rgba(243,241,242,255);
+	/* fallback for old browsers */
+		float: left;
+	width: 100%;
+	padding: 50px 0;
+}
+
+.banner-sec {
+	background-size: cover;
+	min-height: 500px;
+	border-radius: 0 10px 10px 0;
+	padding: 0;
+}
+
+.container {
+	background: #fff;
+	border-radius: 10px;
+	box-shadow: 15px 20px 0px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-inner {
+	border-radius: 0 10px 10px 0;
+  transition: -webkit-transform 1s ease;
+}
+
+.carousel-caption {
+	text-align: left;
+	left: 5%;
+}
+
+.login-sec {
+	padding: 50px 30px;
+	position: relative;
+}
+
+.login-sec .copy-text {
+	position: absolute;
+	width: 80%;
+	bottom: 20px;
+	font-size: 13px;
+	text-align: center;
+}
+
+.login-sec .copy-text i {
+	color: #FEB58A;
+}
+
+.login-sec .copy-text a {
+	color: #E36262;
+}
+
+.login-sec h2 {
+	margin-bottom: 30px;
+	font-weight: 800;
+	font-size: 30px;
+	color: #DE6262;
+}
+
+.login-sec h2:after {
+	content: " ";
+	width: 100px;
+	height: 5px;
+	background: #FEB58A;
+	display: block;
+	margin-top: 20px;
+	border-radius: 3px;
+	margin-left: auto;
+	margin-right: auto
+}
+
+.btn-login {
+	background: #DE6262;
+	color: #fff;
+	font-weight: 600;
+}
+
+.banner-text {
+	width: 70%;
+	position: absolute;
+	bottom: 40px;
+	padding-left: 20px;
+}
+
+.banner-text h2 {
+	color: #fff;
+	font-weight: 600;
+}
+
+.banner-text h2:after {
+	content: " ";
+	width: 100px;
+	height: 5px;
+	background: #FFF;
+	display: block;
+	margin-top: 20px;
+	border-radius: 3px;
+}
+
+.banner-text p {
+	color: #fff;
+}
+
+    .img {
+    -webkit-animation: mover 2s infinite  alternate;
+    animation: mover 2s infinite  alternate;
+    object-position: top right
+}
+@-webkit-keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+@keyframes mover {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
+body{
+
+	/* Chrome 10-25, Safari 5.1-6 */
+	background:rgba(243,241,242,255);
+}
+div.cnt{
+  position: relative;
+        margin: 0 auto;
+        width: 922px;
+    }
+
+    </style> 
+
+  </body>
+
+</html>

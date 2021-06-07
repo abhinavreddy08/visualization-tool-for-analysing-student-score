@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>homepage</title>
+      {% load static %}
+
+    <!-- Bootstrap core CSS -->
+      <link href="{% static '/info/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <!-- Custom styles for this template -->
+      <link href="{% static '/info/homepage/css/heroic-features.css' %}" rel="stylesheet">
+          <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+          <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+
+
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg fixed-top"style="background-color: #e3f2fd;">
+      <div class="container">
+          <a class="navbar-brand" href="{% url 'index' %}"> <img src="{% static 'info/images/logo2.png' %} " style = "height: 50px;"  ></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-capitalize" style ="color:black;">{{ request.user.student.name }}</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"style ="color:black;" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container-fluid"><img src="{% static 'info/images/mai.png' %} "style = "max-width:100%;height: auto"> </div>
+    <div class="container">
+
+      <!-- Jumbotron Header -->
+      <div style="margin-left: 250px;">
+        <br>
+      <br>
+      <header>
+        <h1 class="display-3 text-uppercase"style = "font-family: 'Roboto', sans-serif;">Welcome {{ request.user.student.name }}</h1>
+        <br>
+        <h1 class="display-3 text-uppercase"style = "font-family: 'Roboto', sans-serif;margin-left: 250px;">{{ request.user.student.USN  }}</h1>
+{#        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>#}
+{#        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>#}
+
+      </header>
+      <br>
+      <br>
+      <br>
+      </div>
+
+      <!-- Page Features -->
+      <div class="row text-center">
+
+        <div class="col-lg-6 col-md-6 mb-4">
+          <div class="card" style="width: 25rem; margin:auto">
+              <a href="{% url 'attendance' request.user.student.USN %}">
+                <img class="card-img-top" src="{% static 'info/images/attend.gif' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Attendance</h4>
+              <p class="card-text">View the attendance status for each of your courses. The attendance of each course is
+                  also displayed as list of classes that were conducted.</p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'attendance' request.user.student.USN %}"> View Attendance</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-6 col-md-6 mb-4">
+          <div class="card"style="width: 25rem; margin:auto">
+              <a href="{% url 'marks_list' request.user.student.USN %}">
+                <img class="card-img-top" src="{% static 'info/images/marks.gif' %}" alt="">
+              </a>
+              <div class="card-body">
+              <h4 class="card-title">Marks</h4>
+              <p class="card-text">View the marks obtained for each of your courses. These include the marks of 3
+                  internal assessment, 2 events and the Semester End Exam  </p>
+            </div>
+            <div class="card-footer">
+                <a class="btn btn-primary" role="button" href="{% url 'marks_list' request.user.student.USN %}">View Marks</a>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Topic Cards -->
+    <div id="cards_landscape_wrap-2">
+     
+
+        <div class="container" style="margin-left: 150px;">
+          <h1 style = "font-family: 'Roboto', sans-serif; margin-right: 300px;">PROFESSORS FOR DEPARTMENT </h1>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <a href="https://www.mahindraecolecentrale.edu.in/faculty/raghu-kisore-neelisetti">
+                        <div class="card-flyer">
+                            <div class="text-box">
+                                <div class="image-box">
+                                    <img src="{% static 'info/images/raghu.jpeg' %}"alt="" />
+                                </div>
+                                <div class="text-container">
+                                    <h6>RAGHU KISHORE NEELISETTI</h6>
+                                    <p>Assistant Professor<br> Department Of Computer Science & Engineering</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <a href="https://www.mahindraecolecentrale.edu.in/faculty/veeraiah">
+                        <div class="card-flyer">
+                            <div class="text-box">
+                                <div class="image-box">
+                                    <img src= "{% static 'info/images/veraya.jpeg' %}" alt="" />
+                                </div>
+                                <br>
+                                <div class="text-container">                                    
+                                    <h6>VEERAIAH</h6>
+                                    <p>Assistant Professor
+                                    <br>Department Of Computer Science & Engineering</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+                    <a href="https://www.mahindraecolecentrale.edu.in/faculty/arya-kumar-bhattacharya">
+                        <div class="card-flyer">
+                            <div class="text-box">
+                                <div class="image-box">
+                                    <img src="{% static 'info/images/arya.png' %}" alt="" />
+                                </div>
+
+                                <div class="text-container">
+                                    <h6>ARYA KUMAR BHATTACHARYA</h6>
+                                   <p>Dean Research, HOD<br>
+                                    Department Of Computer Science & Engineering</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+          <div class="modal-footer">
+            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+            <a class="btn btn-primary" href="/accounts/logout">Logout</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript -->
+
+
+      <script src="{% static '/info/homepage/vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static '/info/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+  </body>
+
+</html>
+<style>
+body{
+  background-color: rgba(242,242,242,255);
+
+  
+}
+  /*----  Main Style  ----*/
+#cards_landscape_wrap-2{
+  text-align: center;
+  background: #F7F7F7;
+}
+#cards_landscape_wrap-2 .container{
+  padding-top: 80px; 
+  padding-bottom: 100px;
+}
+#cards_landscape_wrap-2 a{
+  text-decoration: none;
+  outline: none;
+}
+#cards_landscape_wrap-2 .card-flyer {
+  border-radius: 5px;
+}
+#cards_landscape_wrap-2 .card-flyer .image-box{
+  background: #ffffff;
+  overflow: hidden;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.50);
+  border-radius: 5px;
+}
+#cards_landscape_wrap-2 .card-flyer .image-box img{
+  -webkit-transition:all .9s ease; 
+  -moz-transition:all .9s ease; 
+  -o-transition:all .9s ease;
+  -ms-transition:all .9s ease; 
+  width: 100%;
+  height: 200px;
+}
+#cards_landscape_wrap-2 .card-flyer:hover .image-box img{
+  opacity: 0.7;
+  -webkit-transform:scale(1.15);
+  -moz-transform:scale(1.15);
+  -ms-transform:scale(1.15);
+  -o-transform:scale(1.15);
+  transform:scale(1.15);
+}
+#cards_landscape_wrap-2 .card-flyer .text-box{
+  text-align: center;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box .text-container{
+  padding: 30px 18px;
+}
+#cards_landscape_wrap-2 .card-flyer{
+  background: #FFFFFF;
+  margin-top: 50px;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.40);
+}
+#cards_landscape_wrap-2 .card-flyer:hover{
+  background: #fff;
+  box-shadow: 0px 15px 26px rgba(0, 0, 0, 0.50);
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  margin-top: 50px;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box p{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  padding-bottom: 0px; 
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #000000;
+}
+#cards_landscape_wrap-2 .card-flyer .text-box h6{
+  margin-top: 0px;
+  margin-bottom: 4px; 
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: 'Roboto Black', sans-serif;
+  letter-spacing: 1px;
+  color: #00acc1;
+}
+  </style>
+
