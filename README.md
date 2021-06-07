@@ -29,7 +29,7 @@ Example usernames for student:
 username- 'Abhinav'  
 password- 'Abhi12345'  
 
-Example usernames for teacher :
+Example usernames for teacher :  
 username- 'raghukishore'  
 password- 'raghu12345'  
 
