@@ -26,8 +26,8 @@ The login page is common for students and teachers.
  
 
 Example usernames for student:  
-username- 'Abhinav'  
-password- 'Abhi12345'  
+username- 'abhinav'  
+password- 'abhi12345'  
 
 Example usernames for teacher :  
 username- 'raghukishore'  
